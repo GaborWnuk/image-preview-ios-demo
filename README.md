@@ -5,4 +5,4 @@ Mechanism was described by [Facebook in August 2015](https://code.facebook.com/p
 
 ## Preview
 
-![Preview](load_preview.gif)
+![Preview](preview.gif)
