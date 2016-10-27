@@ -5,4 +5,6 @@ Mechanism was described by [Facebook in August 2015](https://code.facebook.com/p
 
 ## Preview
 
+Preview below was prepared on 2G, high latency connection. Blurred preview is delivered immediately with article data (in GraphQL response), with 190 bytes JPG file (with 620 bytes of headers trimmed and added on clients side).
+
 ![Preview](preview_z.gif)
