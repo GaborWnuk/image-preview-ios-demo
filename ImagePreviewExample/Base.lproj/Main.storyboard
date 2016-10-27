@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7nX-hc-aCS">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="E2R-GO-Niz">
+            <objects>
+                <tableViewController id="7nX-hc-aCS" customClass="TableViewController" customModule="ImagePreviewExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="156" sectionHeaderHeight="28" sectionFooterHeight="28" id="xNk-5g-by8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="156" id="9OS-ji-1ba" customClass="TableViewCell" customModule="ImagePreviewExample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="156"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9OS-ji-1ba" id="gXj-2H-Aha">
+                                    <frame key="frameInset" width="375" height="156"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VTV-1Q-r43"/>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EB-Vi-Ij5">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GBx-5g-uHe">
+                                                <frame key="frameInset"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <blurEffect style="light"/>
+                                        </visualEffectView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6t-Hs-DJG">
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charakterystyczne objawy grypy mogą zwiastować poważną chorobę" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOU-0Q-njZ">
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.32534661091549294" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="uOU-0Q-njZ" secondAttribute="trailing" constant="5" id="9g5-vu-ND2"/>
+                                                <constraint firstAttribute="bottom" secondItem="uOU-0Q-njZ" secondAttribute="bottom" constant="5" id="QUu-vM-urn"/>
+                                                <constraint firstItem="uOU-0Q-njZ" firstAttribute="leading" secondItem="P6t-Hs-DJG" secondAttribute="leading" constant="5" id="QqG-aq-yLn"/>
+                                                <constraint firstItem="uOU-0Q-njZ" firstAttribute="top" secondItem="P6t-Hs-DJG" secondAttribute="top" constant="5" id="rUa-c9-hyS"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="VTV-1Q-r43" firstAttribute="top" secondItem="gXj-2H-Aha" secondAttribute="top" id="3Tv-ps-M6U"/>
+                                        <constraint firstAttribute="trailing" secondItem="P6t-Hs-DJG" secondAttribute="trailing" id="3hi-tk-wSQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="0EB-Vi-Ij5" secondAttribute="trailing" id="9KA-aU-oZ0"/>
+                                        <constraint firstItem="P6t-Hs-DJG" firstAttribute="leading" secondItem="gXj-2H-Aha" secondAttribute="leading" id="DAF-ea-nVB"/>
+                                        <constraint firstItem="P6t-Hs-DJG" firstAttribute="top" secondItem="gXj-2H-Aha" secondAttribute="top" constant="96" id="Ij2-sE-mF9"/>
+                                        <constraint firstAttribute="bottom" secondItem="0EB-Vi-Ij5" secondAttribute="bottom" id="UzQ-vK-kev"/>
+                                        <constraint firstAttribute="bottom" secondItem="P6t-Hs-DJG" secondAttribute="bottom" constant="0.5" id="a3V-nu-ivS"/>
+                                        <constraint firstItem="0EB-Vi-Ij5" firstAttribute="leading" secondItem="gXj-2H-Aha" secondAttribute="leading" id="coy-GE-sj6"/>
+                                        <constraint firstAttribute="trailing" secondItem="VTV-1Q-r43" secondAttribute="trailing" id="n2P-ws-96U"/>
+                                        <constraint firstItem="VTV-1Q-r43" firstAttribute="leading" secondItem="gXj-2H-Aha" secondAttribute="leading" id="n5u-tn-Y9H"/>
+                                        <constraint firstAttribute="bottom" secondItem="VTV-1Q-r43" secondAttribute="bottom" id="pxP-dk-xxe"/>
+                                        <constraint firstItem="0EB-Vi-Ij5" firstAttribute="top" secondItem="gXj-2H-Aha" secondAttribute="top" id="uhZ-jk-h1z"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="articleImageView" destination="VTV-1Q-r43" id="T5t-gq-fdC"/>
+                                    <outlet property="articleImageViewBlur" destination="0EB-Vi-Ij5" id="InE-JS-Ak4"/>
+                                    <outlet property="articleTitle" destination="uOU-0Q-njZ" id="21H-gW-z2X"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7nX-hc-aCS" id="cAy-kX-Vbu"/>
+                            <outlet property="delegate" destination="7nX-hc-aCS" id="fqz-WS-k2Z"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="xNk-5g-by8" id="fWW-nw-wqV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SFd-XS-Klm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="157.87106446776613"/>
+        </scene>
+    </scenes>
+</document>
