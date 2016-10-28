@@ -87,11 +87,14 @@ class TableViewController: UITableViewController {
                     self.articles += graph_data["articles"] as! Array<Dictionary<String, AnyObject>>
                 }
 
-                self.tableView.reloadData()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
                 self.current_page = page
                 self.refreshControl?.endRefreshing()
+
+                DispatchQueue.main.async() { () -> Void in
+                    self.tableView.reloadData()
+                }
             } catch {
                 print(error)
             }
