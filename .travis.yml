@@ -2,4 +2,4 @@ language: objective-c
 osx_image: xcode8.1
 xcode_project: ImagePreviewExample.xcodeproj
 xcode_scheme: ImagePreviewExample
-xcode_sdk: iphonesimulator9
+xcode_sdk: iphonesimulator
