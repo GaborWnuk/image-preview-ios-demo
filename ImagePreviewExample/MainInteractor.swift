@@ -27,33 +27,31 @@
 
 import UIKit
 
-protocol MainInteractorInput
-{
-  func doSomething(request: Main.Something.Request)
+protocol MainInteractorInput {
+    var articles: [Article]? { get }
+    func fetchArticles(request: Main.FetchArticles.Request)
 }
 
-protocol MainInteractorOutput
-{
-  func presentSomething(response: Main.Something.Response)
+protocol MainInteractorOutput {
+  func presentFetchedArticles(response: Main.FetchArticles.Response)
 }
 
-class MainInteractor: MainInteractorInput
-{
+class MainInteractor: MainInteractorInput {
   var output: MainInteractorOutput!
   var worker: MainWorker!
+  var articlesWorker = ArticlesWorker(articlesStore: ArticlesAPI())
+
+  var articles: [Article]?
   
   // MARK: - Business logic
   
-  func doSomething(request: Main.Something.Request)
+  func fetchArticles(request: Main.FetchArticles.Request)
   {
     // NOTE: Create some Worker to do the work
-    
-    worker = MainWorker()
-    worker.doSomeWork()
-    
-    // NOTE: Pass the result to the Presenter
-    
-    let response = Main.Something.Response()
-    output.presentSomething(response: response)
+    articlesWorker.fetchArticles { (articles) -> Void in
+      self.articles = articles
+      let response = Main.FetchArticles.Response(articles: articles)
+      self.output.presentFetchedArticles(response: response)
+    }
   }
 }

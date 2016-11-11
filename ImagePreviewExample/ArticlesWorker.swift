@@ -1,5 +1,5 @@
 //
-//  MainWorker.swift
+//  ArticlesWorker.swift
 //  ImagePreviewExample
 //
 //  MIT License
@@ -25,13 +25,45 @@
 //  SOFTWARE.
 //
 
-import UIKit
 
-class MainWorker
+import Foundation
+
+// MARK: - Orders worker
+
+class ArticlesWorker
 {
-  // MARK: - Business Logic
-  
-  func fetchArticles() {
-    // NOTE: Do the work
+  var articlesStore: ArticlesStoreProtocol
+
+  init(articlesStore: ArticlesStoreProtocol)
+  {
+    self.articlesStore = articlesStore
   }
+
+  func fetchArticles(completionHandler: @escaping (_ articles: [Article]) -> Void)
+  {
+    articlesStore.fetchArticles { (articles: [Article], error: ArticlesStoreError?) in
+      completionHandler(articles)
+    }
+  }
+}
+
+// MARK: - Orders store API
+
+protocol ArticlesStoreProtocol
+{
+  // MARK: CRUD operations - Optional error
+
+  func fetchArticles(completionHandler: @escaping (_ articles: [Article], _ error: ArticlesStoreError?) -> Void)
+
+  // MARK: CRUD operations - Generic enum result type
+  // MARK: CRUD operations - Inner closure
+}
+
+// MARK: - Articles store CRUD operation results
+
+// MARK: - Orders store CRUD operation errors
+
+enum ArticlesStoreError: Error
+{
+  case CannotFetch(String)
 }

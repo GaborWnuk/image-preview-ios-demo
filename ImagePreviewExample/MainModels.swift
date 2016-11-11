@@ -27,18 +27,17 @@
 
 import UIKit
 
-struct Main
-{
-  struct Something
-  {
-    struct Request
-    {
+struct Main {
+  struct FetchArticles {
+    struct Request {
     }
-    struct Response
-    {
+
+    struct Response {
+      var articles: [Article]
     }
-    struct ViewModel
-    {
+
+    struct ViewModel {
+      var displayedArticles: [Article]
     }
   }
 }

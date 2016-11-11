@@ -1,5 +1,5 @@
 //
-//  MainWorker.swift
+//  Article.swift
 //  ImagePreviewExample
 //
 //  MIT License
@@ -25,13 +25,9 @@
 //  SOFTWARE.
 //
 
-import UIKit
+import Foundation
 
-class MainWorker
-{
-  // MARK: - Business Logic
-  
-  func fetchArticles() {
-    // NOTE: Do the work
-  }
+struct Article {
+    var title: String?
+    var img: ArticleWebAsset?
 }

@@ -27,27 +27,24 @@
 
 import UIKit
 
-protocol MainPresenterInput
-{
-  func presentSomething(response: Main.Something.Response)
+protocol MainPresenterInput {
+  func presentFetchedArticles(response: Main.FetchArticles.Response)
 }
 
-protocol MainPresenterOutput: class
-{
-  func displaySomething(viewModel: Main.Something.ViewModel)
+protocol MainPresenterOutput: class {
+  func displayFetchedArticles(viewModel: Main.FetchArticles.ViewModel)
 }
 
-class MainPresenter: MainPresenterInput
-{
+class MainPresenter: MainPresenterInput {
   weak var output: MainPresenterOutput!
-  
-  // MARK: - Presentation logic
-  
-  func presentSomething(response: Main.Something.Response)
-  {
-    // NOTE: Format the response from the Interactor and pass the result back to the View Controller
-    
-    let viewModel = Main.Something.ViewModel()
-    output.displaySomething(viewModel: viewModel)
+
+  // MARK: Presentation logic
+
+  func presentFetchedArticles(response: Main.FetchArticles.Response) {
+    // Actually, we display everything without any modification.
+    // This place should be used for example to format date.
+    let displayedArticles: [Article] = response.articles
+    let viewModel = Main.FetchArticles.ViewModel(displayedArticles: displayedArticles)
+    output.displayFetchedArticles(viewModel: viewModel)
   }
 }

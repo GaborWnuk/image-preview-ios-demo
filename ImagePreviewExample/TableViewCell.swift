@@ -21,24 +21,14 @@ class TableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func fillWithData(data: Dictionary<String, AnyObject>) {
-        let jpeg = NSMutableData(data: (UIApplication.shared.delegate as! AppDelegate).jpeg_header! as Data)
+    func fillWithData(article: Article) {
+        self.articleTitle.text = article.title
 
-        //print(jpeg_header;)
-        if let title = data["title"] as? String {
-            self.articleTitle.text = title
-        }
-
-        if let img = data["img"] as? Dictionary<String, AnyObject>, let b64 = img["b64"] as? String, let url = img["url"] as? String {
+        if let img = article.img, let url = img.url {
 
             self.articleImageViewBlur.alpha = 1
 
-            let jpeg_body = Data(base64Encoded: b64)
-            jpeg.append(jpeg_body!)
-
-            let image = UIImage(data: jpeg as Data)
-
-            self.articleImageView.image = image
+            self.articleImageView.image = article.img?.thumbnail
 
             self.task?.cancel()
 

@@ -27,19 +27,16 @@
 
 import UIKit
 
-protocol MainRouterInput
-{
+protocol MainRouterInput {
   func navigateToSomewhere()
 }
 
-class MainRouter: MainRouterInput
-{
+class MainRouter: MainRouterInput {
   weak var viewController: MainViewController!
   
   // MARK: - Navigation
   
-  func navigateToSomewhere()
-  {
+  func navigateToSomewhere() {
     // NOTE: Teach the router how to navigate to another scene. Some examples follow:
     
     // 1. Trigger a storyboard segue
@@ -59,8 +56,7 @@ class MainRouter: MainRouterInput
   
   // MARK: - Communication
   
-  func passDataToNextScene(segue: UIStoryboardSegue)
-  {
+  func passDataToNextScene(segue: UIStoryboardSegue) {
     // NOTE: Teach the router which scenes it can communicate with
     
     if segue.identifier == "ShowSomewhereScene" {
@@ -68,8 +64,7 @@ class MainRouter: MainRouterInput
     }
   }
   
-  func passDataToSomewhereScene(segue: UIStoryboardSegue)
-  {
+  func passDataToSomewhereScene(segue: UIStoryboardSegue) {
     // NOTE: Teach the router how to pass data to the next scene
     
     // let someWhereViewController = segue.destinationViewController as! SomeWhereViewController

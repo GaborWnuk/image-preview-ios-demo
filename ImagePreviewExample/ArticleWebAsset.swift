@@ -1,5 +1,5 @@
 //
-//  MainWorker.swift
+//  ArticleWebAsset.swift
 //  ImagePreviewExample
 //
 //  MIT License
@@ -25,13 +25,33 @@
 //  SOFTWARE.
 //
 
+import Foundation
 import UIKit
 
-class MainWorker
-{
-  // MARK: - Business Logic
-  
-  func fetchArticles() {
-    // NOTE: Do the work
+struct ArticleWebAsset {
+  var url: String?
+  var b64: String?
+
+  var thumbnail: UIImage? {
+    get {
+      guard let b64 = self.b64 else {
+        return nil
+      }
+
+      guard let path = Bundle.main.path(forResource: "source_headers", ofType: "bin") else {
+        return nil
+      }
+
+      guard let jpeg_header = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+        return nil
+      }
+
+      let jpeg = NSMutableData(data: jpeg_header)
+      let jpeg_body = Data(base64Encoded: b64)
+      
+      jpeg.append(jpeg_body!)
+
+      return UIImage(data: jpeg as Data)
+    }
   }
 }

@@ -29,24 +29,19 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension MainViewController: MainPresenterOutput
-{
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
+extension MainViewController: MainPresenterOutput {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     router.passDataToNextScene(segue: segue)
   }
 }
 
-extension MainInteractor: MainViewControllerOutput
-{
+extension MainInteractor: MainViewControllerOutput {
 }
 
-extension MainPresenter: MainInteractorOutput
-{
+extension MainPresenter: MainInteractorOutput {
 }
 
-class MainConfigurator
-{
+class MainConfigurator {
   // MARK: - Object lifecycle
   
   static let sharedInstance = MainConfigurator()
