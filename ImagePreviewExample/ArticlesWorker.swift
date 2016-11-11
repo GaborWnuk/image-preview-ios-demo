@@ -28,7 +28,7 @@
 
 import Foundation
 
-// MARK: - Orders worker
+// MARK: - Articles worker
 
 class ArticlesWorker
 {
@@ -47,7 +47,7 @@ class ArticlesWorker
   }
 }
 
-// MARK: - Orders store API
+// MARK: - Articles store API
 
 protocol ArticlesStoreProtocol
 {
@@ -61,7 +61,7 @@ protocol ArticlesStoreProtocol
 
 // MARK: - Articles store CRUD operation results
 
-// MARK: - Orders store CRUD operation errors
+// MARK: - Articles store CRUD operation errors
 
 enum ArticlesStoreError: Error
 {
