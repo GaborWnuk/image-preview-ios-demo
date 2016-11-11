@@ -34,6 +34,9 @@ struct ArticleWebAsset {
 
   var thumbnail: UIImage? {
     get {
+      // - TODO: You should retain source_headers somewhere
+      // to avoid unneccesary disk reads.
+
       guard let b64 = self.b64 else {
         return nil
       }
