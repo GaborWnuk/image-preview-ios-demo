@@ -71,7 +71,7 @@ class TableViewController: UITableViewController {
 
         print(body)
 
-        let url = URL(string: "http://37.233.102.67:5000/graphql")!
+        let url = URL(string: "https://mobileapi.wp.pl/v1/graphql")!
         let request = NSMutableURLRequest(url: url)
 
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
