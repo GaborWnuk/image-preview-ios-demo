@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  ArticleWebAsset.swift
 //  ImagePreviewExample
 //
 //  MIT License
@@ -25,46 +25,36 @@
 //  SOFTWARE.
 //
 
+import Foundation
 import UIKit
 
-class TableViewCell: UITableViewCell {
+struct ArticleWebAsset {
+  var url: String?
+  var b64: String?
 
-    @IBOutlet weak var articleImageView: UIImageView!
-    @IBOutlet weak var articleTitle: UILabel!
+  var thumbnail: UIImage? {
+    get {
+      // - TODO: You should retain source_headers somewhere
+      // to avoid unneccesary disk reads.
 
-    @IBOutlet weak var articleImageViewBlur: UIVisualEffectView!
-    var task: URLSessionTask?
+      guard let b64 = self.b64 else {
+        return nil
+      }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+      guard let path = Bundle.main.path(forResource: "source_headers", ofType: "bin") else {
+        return nil
+      }
+
+      guard let jpeg_header = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+        return nil
+      }
+
+      let jpeg = NSMutableData(data: jpeg_header)
+      let jpeg_body = Data(base64Encoded: b64)
+      
+      jpeg.append(jpeg_body!)
+
+      return UIImage(data: jpeg as Data)
     }
-
-    func fillWithData(article: Article) {
-        self.articleTitle.text = article.title
-
-        if let img = article.img, let url = img.url {
-
-            self.articleImageViewBlur.alpha = 1
-
-            self.articleImageView.image = article.img?.thumbnail
-
-            self.task?.cancel()
-
-            self.task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
-                guard let data = data, let image = UIImage(data: data) else { return }
-
-                DispatchQueue.main.async() { () -> Void in
-                    UIView.animate(withDuration: 0.3, animations: { 
-                        self.articleImageView.image = image
-                        self.articleImageViewBlur.alpha = 0
-                    })
-                }
-            }
-
-            self.task?.resume()
-        }
-
-    }
-
+  }
 }

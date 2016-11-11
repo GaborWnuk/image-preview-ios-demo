@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  MainInteractor.swift
 //  ImagePreviewExample
 //
 //  MIT License
@@ -27,44 +27,31 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+protocol MainInteractorInput {
+    var articles: [Article]? { get }
+    func fetchArticles(request: Main.FetchArticles.Request)
+}
 
-    @IBOutlet weak var articleImageView: UIImageView!
-    @IBOutlet weak var articleTitle: UILabel!
+protocol MainInteractorOutput {
+  func presentFetchedArticles(response: Main.FetchArticles.Response)
+}
 
-    @IBOutlet weak var articleImageViewBlur: UIVisualEffectView!
-    var task: URLSessionTask?
+class MainInteractor: MainInteractorInput {
+  var output: MainInteractorOutput!
+  var worker: MainWorker!
+  var articlesWorker = ArticlesWorker(articlesStore: ArticlesAPI())
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+  var articles: [Article]?
+  
+  // MARK: - Business logic
+  
+  func fetchArticles(request: Main.FetchArticles.Request)
+  {
+    // NOTE: Create some Worker to do the work
+    articlesWorker.fetchArticles { (articles) -> Void in
+      self.articles = articles
+      let response = Main.FetchArticles.Response(articles: articles)
+      self.output.presentFetchedArticles(response: response)
     }
-
-    func fillWithData(article: Article) {
-        self.articleTitle.text = article.title
-
-        if let img = article.img, let url = img.url {
-
-            self.articleImageViewBlur.alpha = 1
-
-            self.articleImageView.image = article.img?.thumbnail
-
-            self.task?.cancel()
-
-            self.task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
-                guard let data = data, let image = UIImage(data: data) else { return }
-
-                DispatchQueue.main.async() { () -> Void in
-                    UIView.animate(withDuration: 0.3, animations: { 
-                        self.articleImageView.image = image
-                        self.articleImageViewBlur.alpha = 0
-                    })
-                }
-            }
-
-            self.task?.resume()
-        }
-
-    }
-
+  }
 }
