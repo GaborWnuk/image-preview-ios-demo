@@ -116,6 +116,7 @@
 				D115A8141DD5E6AF00A69719 /* MainRouter.swift */,
 				D115A8151DD5E6AF00A69719 /* MainViewController.swift */,
 				D115A8161DD5E6AF00A69719 /* MainWorker.swift */,
+				D115A82B1DD60C4700A69719 /* Table View Cells */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -143,6 +144,14 @@
 				D115A8291DD5F7C400A69719 /* ArticlesAPI.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		D115A82B1DD60C4700A69719 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D17EEECD1DC1E4C100FD2782 /* TableViewCell.swift */,
+			);
+			name = "Table View Cells";
 			sourceTree = "<group>";
 		};
 		D1691F871DBA75440080B765 = {
@@ -173,7 +182,6 @@
 				D115A8281DD5F79A00A69719 /* Services */,
 				D115A80E1DD5E69200A69719 /* Scenes */,
 				D1691F931DBA75440080B765 /* AppDelegate.swift */,
-				D17EEECD1DC1E4C100FD2782 /* TableViewCell.swift */,
 				D1691F971DBA75440080B765 /* Main.storyboard */,
 				D1691F9A1DBA75440080B765 /* Assets.xcassets */,
 				D1691F9C1DBA75440080B765 /* LaunchScreen.storyboard */,
